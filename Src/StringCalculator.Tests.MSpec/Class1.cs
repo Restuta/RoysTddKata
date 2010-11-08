@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Machine.Specifications;
+using Machine.Specifications.Annotations;
 using StringCalculator.Core;
 
 namespace StringCalculator.Tests.MSpec
@@ -13,14 +14,9 @@ namespace StringCalculator.Tests.MSpec
         private static SimpleStringCalculator simpleStringCalculator;
         private static int result = -1;
 
-        Establish context =
-            () =>
-                {
-                    simpleStringCalculator = new SimpleStringCalculator();
-                };
+        Establish context = () => simpleStringCalculator = new SimpleStringCalculator();
 
-        Because of =
-            () => result = simpleStringCalculator.Add(string.Empty);
+        Because of = () => result = simpleStringCalculator.Add(string.Empty);
 
         It should_return_a_zero = () => result.ShouldEqual(0);
     }
